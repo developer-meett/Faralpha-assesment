@@ -212,13 +212,7 @@ docker push <your-dockerhub-username>/flask-mongodb-app:latest
 
 ---
 
-> ### 📷 [SCREENSHOT PLACEHOLDER 2: Image in Minikube Registry]
-> **Command to run**:
-> ```bash
-> minikube image ls | grep flask
-> ```
-> *Insert screenshot below showing `docker.io/library/flask-mongodb-app:latest` listed in Minikube:*  
-> ![Screenshot 2 - Minikube Image](screenshots/screenshot_2_minikube_image.png)
+![Screenshot 2 - Minikube Image](screenshots/screenshot_2_minikube_image.png)
 
 ---
 
@@ -454,13 +448,7 @@ spec:
 
 ---
 
-> ### 📷 [SCREENSHOT PLACEHOLDER 3: Kubernetes Manifests Directory]
-> **Command to run**:
-> ```bash
-> ls -la kubernetes/
-> ```
-> *Insert screenshot below showing all 9 YAML manifests:*  
-> ![Screenshot 3 - Manifests Listing](screenshots/screenshot_3_manifests_listing.png)
+![Screenshot 3 - Manifests Listing](screenshots/screenshot_3_manifests_listing.png)
 
 ---
 
@@ -468,77 +456,31 @@ spec:
 
 ### 6.1 Cluster Deployment Status Verification
 
-> ### 📷 [SCREENSHOT PLACEHOLDER 4: Complete Cluster Resources]
-> **Command to run**:
-> ```bash
-> kubectl get all,pv,pvc,hpa,secret -n flask-app
-> ```
-> *Insert screenshot below showing all Pods Running (2 Flask pods + 1 MongoDB pod), Services, PVC Bound, and HPA active:*  
-> ![Screenshot 4 - Cluster Overview](screenshots/screenshot_4_cluster_overview.png)
+![Screenshot 4 - Cluster Overview](screenshots/screenshot_4_cluster_overview.png)
 
 ---
 
 ### 6.2 DNS Resolution Verification
 
-> ### 📷 [SCREENSHOT PLACEHOLDER 5: CoreDNS Resolution Inside Pod]
-> **Command to run**:
-> ```bash
-> kubectl exec $(kubectl get pods -n flask-app -l app=flask-app -o jsonpath='{.items[0].metadata.name}') -n flask-app -- python -c "import socket; print('Resolved IP for mongodb-service:', socket.gethostbyname('mongodb-service'))"
-> ```
-> *Insert screenshot below showing CoreDNS resolving `mongodb-service` directly to the service ClusterIP:*  
-> ![Screenshot 5 - DNS Resolution](screenshots/screenshot_5_dns_resolution.png)
+![Screenshot 5 - DNS Resolution](screenshots/screenshot_5_dns_resolution.png)
 
 ---
 
 ### 6.3 Resource Requests and Limits Verification
 
-> ### 📷 [SCREENSHOT PLACEHOLDER 6: Resource Requests and Limits]
-> **Command to run**:
-> ```bash
-> kubectl describe deployment flask-deployment -n flask-app | grep -E "Limits|Requests|cpu|memory"
-> ```
-> *Insert screenshot below showing CPU requests (200m), CPU limits (500m), Memory requests (250Mi), and Memory limits (500Mi):*  
-> ![Screenshot 6 - Resource Limits](screenshots/screenshot_6_resource_limits.png)
+![Screenshot 6 - Resource Limits](screenshots/screenshot_6_resource_limits.png)
 
 ---
 
 ### 6.4 API Endpoints & MongoDB CRUD Testing
 
-> ### 📷 [SCREENSHOT PLACEHOLDER 7: Endpoints Verification (GET / & POST/GET /data)]
-> **Command to run**:
-> ```bash
-> # 1. Test Welcome endpoint
-> curl -i http://127.0.0.1:60090/
-> 
-> # 2. Insert record into MongoDB
-> curl -i -X POST http://127.0.0.1:60090/data \
->   -H "Content-Type: application/json" \
->   -d '{"student": "Meet", "status": "Verified in K8s"}'
-> 
-> # 3. Query all records from MongoDB
-> curl -i http://127.0.0.1:60090/data
-> ```
-> *Insert screenshot below showing HTTP 200 OK on `/`, HTTP 201 Created on `/data`, and JSON array response:*  
-> ![Screenshot 7 - API CRUD Testing](screenshots/screenshot_7_api_testing.png)
+![Screenshot 7 - API CRUD Testing](screenshots/screenshot_7_api_testing.png)
 
 ---
 
 ### 6.5 Data Persistence & Self-Healing Testing
 
-> ### 📷 [SCREENSHOT PLACEHOLDER 8: Data Persistence Across Pod Destruction]
-> **Command to run**:
-> ```bash
-> # 1. Delete MongoDB Pod
-> kubectl delete pod mongodb-0 -n flask-app
-> 
-> # 2. Verify StatefulSet recreates pod
-> kubectl get pods -n flask-app
-> 
-> # 3. Query data again to verify persistence
-> curl http://127.0.0.1:60090/data
-> ```
-> *Insert screenshot below showing that after deleting `mongodb-0`, the record remains stored and returned:*  
-> ![Screenshot 8 - Data Persistence](screenshots/screenshot_8_data_persistence.png)
+![Screenshot 8 - Data Persistence](screenshots/screenshot_8_data_persistence.png)
 
 ---
 
@@ -555,21 +497,13 @@ spec:
    ```
 3. Watch **Terminal 1** as CPU utilization spikes past 70% and Kubernetes triggers scaling from 2 replicas to 3, 4, or 5 replicas.
 
-> ### 📷 [SCREENSHOT PLACEHOLDER 9: Autoscaling Scale-Up Evidence]
-> *Insert screenshot below showing HPA targets exceeding 70% and the Deployment scaling to 3+ Pods:*  
-> ![Screenshot 9 - HPA Autoscaling](screenshots/screenshot_9_hpa_autoscaling.png)
+![Screenshot 9 - HPA Autoscaling](screenshots/screenshot_9_hpa_autoscaling.png)
 
 ---
 
 ### 6.7 Project Documentation & Git Submission
 
-> ### 📷 [SCREENSHOT PLACEHOLDER 10: README and Git Repository]
-> **Command to run**:
-> ```bash
-> git log -n 1 --stat
-> ```
-> *Insert screenshot below showing clean Git log and commits pushed to GitHub:*  
-> ![Screenshot 10 - Git Submission](screenshots/screenshot_10_git_submission.png)
+![Screenshot 10 - Git Submission](screenshots/screenshot_10_git_submission.png)
 
 ---
 
